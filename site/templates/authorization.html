@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block auth %}
+<h1>Authorization</h1>
+<form action="/accounts/authorization/" method="post" name="loginform">
+    {% csrf_token %} <!--Промежуточный слой CSRF и шаблонный тег предоставляют легкую-в-использовании защиту против Межсайтовой подделки запроса.-->
+    {{auth_form.as_p}} <!--выводит поля формы в виде параграфов (т.е. <p/>)-->
+
+    <input type="submit" /> <!-- кнопки или инпуты отправки, это часть шаблона (для лучшей кастомизации)-->
+    {% if auth_form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+</form>
+<h1>or Registration</h1>
+<form action="/accounts/registration/" method="post" name="registration">
+    {% csrf_token %}
+    {{reg_form.as_p}}
+    <input type="submit" />
+</form>
+{% endblock auth %}
