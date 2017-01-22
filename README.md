@@ -2,7 +2,7 @@
 
 My tests with django + auth
 
-## How install
+## How usage
 1. create virtualenv with Python 2.7
 2. set that virtualenv
 3. pip install django==1.10
